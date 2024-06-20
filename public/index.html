@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bolaMagica</title>
+    <script>
+        function respuesta(){
+            const url = `http://localhost:3000/respuesta`;
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    // Poner el resultado en el campo de output
+                    document.getElementById('output').value = data;
+                })
+                .catch(error => console.error('Error al realizar la solicitud:', error));
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="input">Introduce una pregunta:</label>
+        <input type="text" id="input" name="input">
+        <button onclick="respuesta()">Obtén</button>
+        <label for="output">Respuesta:</label>
+        <input type="text" id="output" name="output" readonly>
+    </div>
+</body>
+</html>
